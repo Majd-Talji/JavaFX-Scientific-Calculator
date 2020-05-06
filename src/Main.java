@@ -15,6 +15,9 @@ import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyCodeCombination;
+import javafx.scene.input.KeyCombination;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -746,49 +749,81 @@ public class Main extends Application {
 
         myStage.show();
 
-        scene.addEventFilter(KeyEvent.KEY_PRESSED, (KeyEvent e) -> {
+        KeyCombination shiftPlus = new KeyCodeCombination(KeyCode.PLUS, KeyCodeCombination.SHIFT_DOWN);
+        KeyCombination shift7 = new KeyCodeCombination(KeyCode.DIGIT7, KeyCodeCombination.SHIFT_DOWN);
+        KeyCombination shift5Modulo = new KeyCodeCombination(KeyCode.DIGIT5, KeyCodeCombination.SHIFT_DOWN);
+        KeyCombination shift8ParentesesLeft = new KeyCodeCombination(KeyCode.DIGIT8, KeyCodeCombination.SHIFT_DOWN);
+        KeyCombination shift9ParentesesRight = new KeyCodeCombination(KeyCode.DIGIT9, KeyCodeCombination.SHIFT_DOWN);
 
+        scene.setOnKeyPressed((KeyEvent e) -> {
+            System.out.println(e);
             if (null != e.getCode()) {
 
                 switch (e.getCode()) {
                     case NUMPAD0:
+                    case DIGIT0:
                         b0_isClicked();
                         break;
 
                     case NUMPAD1:
+                    case DIGIT1:
                         b1_isClicked();
                         break;
 
                     case NUMPAD2:
+                    case DIGIT2:
                         b2_isClicked();
                         break;
 
                     case NUMPAD3:
+                    case DIGIT3:
                         b3_isClicked();
                         break;
 
                     case NUMPAD4:
+                    case DIGIT4:
                         b4_isClicked();
                         break;
 
                     case NUMPAD5:
-                        b5_isClicked();
+                    case DIGIT5:
+                        if (shift5Modulo.match(e)) {
+                            modulo_isClicked();
+                        } else {
+                            b5_isClicked();
+                        }                        
                         break;
 
                     case NUMPAD6:
+                    case DIGIT6:
                         b6_isClicked();
                         break;
 
                     case NUMPAD7:
-                        b7_isClicked();
+                    case DIGIT7:
+                        if (shift7.match(e)) {
+                            divide_isClicked();
+                        } else {
+                            b7_isClicked();
+                        }
                         break;
 
                     case NUMPAD8:
-                        b8_isClicked();
+                    case DIGIT8:
+                        if (shift8ParentesesLeft.match(e)) {
+                            parentesesLeft_isClicked();
+                        } else {
+                            b8_isClicked();
+                        }                        
                         break;
 
                     case NUMPAD9:
-                        b9_isClicked();
+                    case DIGIT9:
+                        if (shift9ParentesesRight.match(e)) {
+                            parentesesRight_isClicked();
+                        } else {
+                            b9_isClicked();
+                        }                                                    
                         break;
 
                     case S:
@@ -816,10 +851,16 @@ public class Main extends Application {
                         break;
 
                     case PLUS:
-                        plus_isClicked();
+                    case ADD:
+                        if (shiftPlus.match(e)) {
+                            multiple_isClicked();
+                        } else {
+                            plus_isClicked();
+                        }                        
                         break;
 
                     case MINUS:
+                    case SUBTRACT:
                         minus_isClicked();
                         break;
 
@@ -829,22 +870,6 @@ public class Main extends Application {
 
                     case DIVIDE:
                         divide_isClicked();
-                        break;
-
-                    case DIGIT5:
-                        modulo_isClicked();
-                        break;
-
-                    case DIGIT6:
-                        power_isClicked();
-                        break;
-
-                    case DIGIT0:
-                        parentesesRight_isClicked();
-                        break;
-
-                    case DIGIT9:
-                        parentesesLeft_isClicked();
                         break;
 
                     case COMMA:
@@ -1002,7 +1027,7 @@ public class Main extends Application {
             alert.setContentText(str);
             alert.showAndWait();
         }
-
+        
     }
 
     public static void main(String[] args) {
