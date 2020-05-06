@@ -1,0 +1,68 @@
+#root {
+    -fx-background-color: #222;
+}
+
+#b0, #b1, #b2, #b3, #b4, #b5, #b6, #b7, #b8, #b9, #comma {
+    -fx-text-fill: white;
+    -fx-background-color: dimgray;
+}
+
+#plus, #minus, #multiple, #divide, #equal, #cos, #sin, #tan, #sqrt,
+#pi, #exponential, #modulo, #parentesesLeft, #parentesesRight, #power {
+    -fx-text-fill: white;
+    -fx-background-color: darkslategray;
+}
+
+#b0, #b1, #b2, #b3, #b4, #b5, #b6, #b7, #b8, #b9, #comma ,#plus, #minus, 
+#multiple, #divide, #equal, #sqrt, #pi, #exponential, #modulo, #parentesesLeft, 
+#parentesesRight, #power {
+    -fx-font-family: Arial;
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+}
+
+#cos, #sin, #tan {
+    -fx-font-family: Arial;
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+#clear {
+    -fx-text-fill: white;
+    -fx-background-color: #E50101;
+}
+
+#back {
+    -fx-text-fill: white;
+    -fx-background-color: orangered;
+}
+
+#textField {
+    -fx-background-color: lightgoldenrodyellow;
+    -fx-font-family: Arial;
+    -fx-font-size: 19px;
+    -fx-font-weight: bold;
+}
+
+#historyText {
+    -fx-font-family: Arial;
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+}
+
+#historyText .content {
+    -fx-background-color: #dcdcdc;
+}
+
+.menu-bar {
+    -fx-background-color: #333;
+}
+
+.menu-bar .label{
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.context-menu {
+    -fx-background-color: #333;
+}
